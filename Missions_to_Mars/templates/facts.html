@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Home Page</title>
+</head>
+<body>
+  {% extends "navigation.html" %}
+  {% block content %}
+  <div class="container-fluid padding first-container">
+    <span class="anchor" id="Home"></span>
+    <div class="row padding">
+      <div class="col-md-4">
+        <div class="table-responsive" style="height:460px">
+          <table class="table table-sm" style="margin-bottom: 0">
+            <thead>
+              <tr class="table-dark">
+                <th style="width: 35%">Description</th>
+                <th style="width: 65%">Mars Fact</th>
+              </tr>
+              {% for record in data %}
+              <tr style='cursor: pointer; cursor: hand;' onclick="scroll_to('image');" class= "small">
+                <td style="width: 35%">{{record['Description']}}</td>
+                <td style="width: 65%">{{record['Mars_Fact']}}</td>
+              </tr >
+              {% endfor %}
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-8 anyClass" id="target-container">
+
+        <span class="picture" id='image'></span>
+        <div class="card">
+          <img class="card-img-bottom" src='https://www.jpl.nasa.gov/spaceimages/images/wallpaper/PIA14316-1920x1200.jpg'>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+          </div>
+        <hr class="light">
+      </div>
+    </div>
+  </div>
+  <figure>
+    <div class="fixed-wrap">
+      <div id="fixed">
+      </div>
+    </div>
+  </figure>
+  {% endblock %}
+</body>
+</html>

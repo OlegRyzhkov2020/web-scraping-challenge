@@ -27,16 +27,18 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_db")
 @app.route("/")
 def home():
 
-    # Find one record of data from the mongo database
+    # Find records of data from the mongo database
     news_data = mongo.db.mars_news
     latest_news = []
+    id = 1
     for s in news_data.find():
-        latest_news.append({'Date' : s['Date'], 'News_Title' : s['News_Title'],
+        latest_news.append({'ID':id, 'Date' : s['Date'], 'News_Title' : s['News_Title'],
                             'News_Paragraph': s['News_Paragraph'], 'Image_Name':s['Image_Name'],
                             'Image_URL':s['Image_URL']})
+        if id == 1: head_news = [s['News_Title'], s['News_Paragraph']]
+        id +=1
     # Return template and data
-    print(latest_news)
-    return render_template("home.html", data=latest_news)
+    return render_template("home.html", data=latest_news, head_news = head_news)
 
 # Route that will trigger the scrape function
 @app.route("/scrape")
@@ -52,9 +54,26 @@ def scrape():
     # Redirect back to home page
     return redirect("/")
 
-# Route that will trigger the scrape function
+# Route that will trigger the facts html page
 @app.route("/facts")
 def facts():
+    # Find records of data from the mongo database
+    facts_data = mongo.db.mars_facts
+    mars_facts = []
+    for s in facts_data.find():
+        mars_facts.append({'Description' : s['Description'], 'Mars_Fact' : s['Mars_Fact']})
+    # Return template and data
+    return render_template("facts.html", data=mars_facts)
+
+# Route that will trigger the hemisphere html page
+@app.route("/hem")
+def hem():
+    # Redirect back to home page
+    return redirect("/")
+
+# Route that will trigger the contacts html page
+@app.route("/contacts")
+def contacts():
     # Redirect back to home page
     return redirect("/")
 

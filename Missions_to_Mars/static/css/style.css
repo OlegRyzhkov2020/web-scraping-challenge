@@ -81,7 +81,7 @@ button
 */
 
 span.anchor {
-    margin-top: -120px !important; /* height of nav, in this case 54px */
+    margin-top: -100px !important; /* height of nav, in this case 54px */
     display: block;
     height: 100px; /* height of nav, in this case 54px */
     visibility: hidden;
@@ -93,8 +93,8 @@ span.anchor {
   border: 0px;
   color: #111;
 }
-.btn-primary :hover {
-  background-color: #87CEFA;
+.btn-primary:hover {
+  background-color: darkred !important;
   border: 1px solid #000000;
   color: #FFFFFF;
 }
@@ -103,7 +103,7 @@ span.anchor {
   border-radius: 0;
 }
 .padding {
-  padding-bottom: 2rem;
+  padding-bottom: 0.8rem;
 }
 .welcome {
   width: 75%;
@@ -198,7 +198,7 @@ hr.light-100 {
   width: 160px
 }
 .bg-news {
-  background-color: darkblue;
+  background-color: darkred;
 }
 .news-scroll a {
     text-decoration: none;
@@ -206,7 +206,7 @@ hr.light-100 {
 }
 
 .news-scroll a:hover {
-    color: darkblue;
+    color: darkred;
 }
 
 .dot {
@@ -215,7 +215,7 @@ hr.light-100 {
     margin-left: 3px;
     margin-right: 3px;
     margin-top: 2px !important;
-    background-color: darkblue;
+    background-color: darkred;
     border-radius: 50%;
     display: inline-block
 }
@@ -303,23 +303,24 @@ thead, tbody tr {
   width: 100%;
   table-layout: fixed;
 }
+
 tbody {
   display: block;
   overflow-y: auto;
   overflow-x: auto;
   table-layout: fixed;
-  max-height: 400px;
+  max-height: 480px;
 }
 
 .anyClass {
-  height:400px;
+  height:480px;
   overflow-y:auto;
   overflow-x: auto;
 }
 
 tr:hover {
-  color: black;
-  background: lightgrey !important;
+  color: white;
+  background: darkred !important;
 }
 
 .box-content {overflow-x:auto;}
@@ -348,7 +349,7 @@ figure {
   height: 100%;
 }
 #fixed {
-  background-image: url('images/html_code.png');
+  background-image: url('https://www.jpl.nasa.gov/spaceimages/images/wallpaper/PIA14316-1920x1200.jpg');
   position: fixed;
   display: block;
   top: 0;

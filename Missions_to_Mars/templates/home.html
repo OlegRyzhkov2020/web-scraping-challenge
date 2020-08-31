@@ -3,6 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Home Page</title>
+  <script>
+  function scroll_to(target_id) {
+    var container = document.getElementById('target-container');
+    var scrollTo = document.getElementById(" " + target_id);
+    container.scrollTop = scrollTo.offsetTop;
+  }
+  </script>
 </head>
 <body>
   {% extends "navigation.html" %}
@@ -11,23 +18,23 @@
     <span class="anchor" id="Home"></span>
     <div class="col-md-12">
       <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
-        <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-news py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Data Quotes</span></div>
-        <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a href="#">“In God we trust, all others bring data.” — W Edwards Deming </a> <span class="dot"></span> <a href="#">“If we have data, let’s look at data. If all we have are opinions, let’s go with mine.” — Jim Barksdale</a> </marquee>
+        <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-news py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Latest News</span></div>
+        <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a >{{ head_news[0] }}</a> <span class="dot"></span><a >{{ head_news[1] }}</a> </marquee>
       </div>
     </div>
-    <div class="row padding">
+    <div class="row">
       <div class="col-md-8">
-        <div class="table-responsive" style="height:400px">
+        <div class="table-responsive" style="height:460px">
           <table class="table table-sm" style="margin-bottom: 0">
             <thead>
               <tr class="table-dark">
-                <th>Date</th>
-                <th>News Title</th>
+                <th style="width: 35%">Date</th>
+                <th style="width: 65%">News Title</th>
               </tr>
               {% for news in data %}
-              <tr style='cursor: pointer; cursor: hand;' onclick="scroll_to(" + {{news['Image_Name']}} + ");" class= "small">
-                <td>{{news['Date']}}</td>
-                <td>{{news['News_Title']}}</td>
+              <tr style='cursor: pointer; cursor: hand;' onclick="scroll_to('{{news['ID']}}');" class= "small">
+                <td style="width: 35%">{{news['Date']}}</td>
+                <td style="width: 65%">{{news['News_Title']}}</td>
               </tr >
               {% endfor %}
             </thead>
@@ -36,20 +43,26 @@
       </div>
       <div class="col-md-4 anyClass" id="target-container">
         {% for news in data %}
-        <span class="picture" id={{news['Image_Name']}}></span>
+        <span class="picture" id=" {{news['ID']}}"></span>
         <div class="card">
           <img class="card-img-top" src={{news['Image_URL']}}>
           <div class="card-body">
-            <h4 class="card-title">{{news['Image_Name']}}</h4>
+            <h5 class="card-title">{{news['Image_Name']}}</h5>
             <p class="card-text">{{news['News_Paragraph']}}
             </p>
           </div>
-        <hr class="light">
+          <hr class="light">
+        </div>
         {% endfor %}
       </div>
     </div>
   </div>
-
+  <figure>
+    <div class="fixed-wrap">
+      <div id="fixed">
+      </div>
+    </div>
+  </figure>
   {% endblock %}
 </body>
 </html>
