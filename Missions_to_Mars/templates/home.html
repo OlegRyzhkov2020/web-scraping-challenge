@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Home Page</title>
+</head>
+<body>
+  {% extends "navigation.html" %}
+  {% block content %}
+  <div class="container-fluid padding first-container">
+    <span class="anchor" id="Home"></span>
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+        <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-news py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Data Quotes</span></div>
+        <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a href="#">“In God we trust, all others bring data.” — W Edwards Deming </a> <span class="dot"></span> <a href="#">“If we have data, let’s look at data. If all we have are opinions, let’s go with mine.” — Jim Barksdale</a> </marquee>
+      </div>
+    </div>
+    <div class="row padding">
+      <div class="col-md-8">
+        <div class="table-responsive" style="height:400px">
+          <table class="table table-sm" style="margin-bottom: 0">
+            <thead>
+              <tr class="table-dark">
+                <th>Date</th>
+                <th>News Title</th>
+              </tr>
+              {% for news in data %}
+              <tr style='cursor: pointer; cursor: hand;' onclick="scroll_to(" + {{news['Image_Name']}} + ");" class= "small">
+                <td>{{news['Date']}}</td>
+                <td>{{news['News_Title']}}</td>
+              </tr >
+              {% endfor %}
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-4 anyClass" id="target-container">
+        {% for news in data %}
+        <span class="picture" id={{news['Image_Name']}}></span>
+        <div class="card">
+          <img class="card-img-top" src={{news['Image_URL']}}>
+          <div class="card-body">
+            <h4 class="card-title">{{news['Image_Name']}}</h4>
+            <p class="card-text">{{news['News_Paragraph']}}
+            </p>
+          </div>
+        <hr class="light">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</body>
+</html>

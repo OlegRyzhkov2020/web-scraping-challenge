@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oleg Ryzhkov Website</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script>
+  function scroll_to(target_id) {
+    var container = document.getElementById('target-container');
+    var scrollTo = document.getElementById(target_id);
+    container.scrollTop = scrollTo.offsetTop;
+  }
+  </script>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='mission.png')}}"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="btn btn-primary" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary" href="{{ url_for('facts') }}">Mars facts</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary" href="{{ url_for('scrape') }}">Scrape news</a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <span class="btn btn-primary dropdown-toggle" role="button" id="#dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hemisphere
+            </span>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#Hem 1">Valles Marineris & Cerberus</a>
+              <a class="dropdown-item" href="#Hem 2">Schiaparelli & Syrtis Major</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary" href="#Contacts">Contacts</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
