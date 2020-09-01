@@ -38,13 +38,13 @@
               Hemisphere
             </span>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#Hem 1">Valles Marineris & Cerberus</a>
-              <a class="dropdown-item" href="#Hem 2">Schiaparelli & Syrtis Major</a>
+              <a class="dropdown-item" href="{{ url_for('hem_1') }}">Valles Marineris & Cerberus</a>
+              <a class="dropdown-item" href="{{ url_for('hem_2') }}">Schiaparelli & Syrtis Major</a>
             </div>
           </div>
         </li>
         <li class="nav-item">
-          <a class="btn btn-primary" href="#Contacts">Contacts</a>
+          <a class="btn btn-primary" href="{{ url_for('contacts') }}">Contacts</a>
         </li>
       </ul>
     </div>

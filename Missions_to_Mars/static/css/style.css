@@ -93,6 +93,8 @@ span.anchor {
   border: 0px;
   color: #111;
 }
+
+.show .dropdown-toggle,
 .btn-primary:hover {
   background-color: darkred !important;
   border: 1px solid #000000;

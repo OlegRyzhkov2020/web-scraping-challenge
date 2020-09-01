@@ -66,16 +66,35 @@ def facts():
     return render_template("facts.html", data=mars_facts)
 
 # Route that will trigger the hemisphere html page
-@app.route("/hem")
-def hem():
-    # Redirect back to home page
-    return redirect("/")
+@app.route("/hem_1")
+def hem_1():
+    hem_data = mongo.db.mars_hem
+    hem_1 = []
+    id = 1
+    for s in hem_data.find():
+        if id == 1 or id == 4:
+            hem_1.append({'title' : s['title'], 'img' : s['img_url']})
+        id +=1
+    # Return template and data
+    return render_template("hem_1.html", data=hem_1)
+
+@app.route("/hem_2")
+def hem_2():
+    hem_data = mongo.db.mars_hem
+    hem_2 = []
+    id = 1
+    for s in hem_data.find():
+        if id == 2 or id == 3:
+            hem_2.append({'title' : s['title'], 'img' : s['img_url']})
+        id +=1
+    # Return template and data
+    return render_template("hem_2.html", data=hem_2)
 
 # Route that will trigger the contacts html page
 @app.route("/contacts")
 def contacts():
-    # Redirect back to home page
-    return redirect("/")
+    # Return template and data
+    return render_template("contacts.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

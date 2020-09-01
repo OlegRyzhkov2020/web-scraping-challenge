@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Home Page</title>
+</head>
+<body>
+  {% extends "navigation.html" %}
+  {% block content %}
+  <div class="container-fluid padding first-container">
+    <span class="anchor" id="Home"></span>
+    <div class="row padding">
+      <div class="col-md-6">
+        <span class="picture" id='image'></span>
+        <div class="card">
+          <img class="card-img-bottom" src={{data[0]['img']}}>
+          <div class="card-body">
+            <h5 class="card-title">src={{data[0]['title']}}</h5>
+          </div>
+          <hr class="light">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <span class="picture" id='image'></span>
+        <div class="card">
+          <img class="card-img-bottom" src={{data[1]['img']}}>
+          <div class="card-body">
+            <h5 class="card-title">src={{data[1]['title']}}</h5>
+          </div>
+          <hr class="light">
+        </div>
+      </div>
+    </div>
+  </div>
+  <figure>
+    <div class="fixed-wrap">
+      <div id="fixed">
+      </div>
+    </div>
+  </figure>
+  {% endblock %}
+</body>
+</html>
