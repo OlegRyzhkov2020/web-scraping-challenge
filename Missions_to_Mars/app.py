@@ -57,13 +57,15 @@ def scrape():
 # Route that will trigger the facts html page
 @app.route("/facts")
 def facts():
-    # Find records of data from the mongo database
+    # Find records of data from the mongo database mars_facts
     facts_data = mongo.db.mars_facts
     mars_facts = []
     for s in facts_data.find():
         mars_facts.append({'Description' : s['Description'], 'Mars_Fact' : s['Mars_Fact']})
+    # Find records of data from the mongo database mars_images
+    image_data = mongo.db.mars_images.find_one()
     # Return template and data
-    return render_template("facts.html", data=mars_facts)
+    return render_template("facts.html", data=mars_facts, image = image_data['Image_url'])
 
 # Route that will trigger the hemisphere html page
 @app.route("/hem_1")

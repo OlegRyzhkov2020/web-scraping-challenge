@@ -10,7 +10,8 @@ Data Science and Visualization Boot Camp (Northwestern University)
 ![GitHub followers](https://img.shields.io/github/followers/OlegRyzhkov2020?label=Follow&style=social)
 
 ## Application Setup
-* To run the Flask server, I use virtual environment with Python3:
+* Run mission_to_mars.ipynb in Jupyter Notebook to create Mars database and collections
+* Run the Flask server using the virtual environment with Python3:
 ** pipenv shell
 ** pip install Flask Flask-PyMongo
 ** python app.py
